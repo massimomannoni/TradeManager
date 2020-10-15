@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Net;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using TradeManager.Service.Domain.Trade;
@@ -11,16 +12,20 @@ namespace TradeManager.Service.Trades.CreateTrade
 {
     public class ProductTradeService : Entity
     {
-        private readonly UpsLightContext _upsLightContext;
-        public ProductTradeService(UpsLightContext upsLightContext)
+
+        private readonly UpsLightContext _context;
+        public ProductTradeService(UpsLightContext context)
         {
-            _upsLightContext = upsLightContext;
+            _context = context;
         }
+
         public async Task<Guid> Create(ProductTrade newTrade)
         {
             // store the object
-            _upsLightContext.ProductTrade.Add(newTrade);
+            await _context.ProductTrade.AddAsync(newTrade);
 
+            await _context.SaveChangesAsync();
+    
             // raise domain events
             AddDomainEvent(new TradeRegisteredEvent(newTrade));
 

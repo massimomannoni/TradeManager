@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TradeManager.Service.Configuration.Processing;
+using TradeManager.Service.DomainEvents.Trades;
 
 namespace TradeManager.Service.Trades.IntegrationHandlers
 {
@@ -17,10 +18,8 @@ namespace TradeManager.Service.Trades.IntegrationHandlers
 
         public async Task Handle(TradeRegisteredNotification notification, CancellationToken cancellationToken)
         {
-            // add command to process to queue
-            // need to implement consumer or process the queue
-
-           // await _commandsScheduler.EnqueueAsync();
+            //
+            await _commandsScheduler.EnqueueAsync(new TradeRegisteredCommand(Guid.NewGuid(), notification.Trade));
         }
     }
 }

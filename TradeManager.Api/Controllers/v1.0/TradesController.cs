@@ -1,29 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TradeManager.Service;
 using TradeManager.Service.Models;
+using TradeManager.Service.Trades.CreateTrade;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TradeManager.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(ApiBase.Trades)]
     [ApiController]
-    public class TradeController : ControllerBase
+    public class TradesController : ControllerBase
     {
-       
+        private readonly UpsLightContext _context;
 
-        // GET: api/<TradeController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public TradesController(UpsLightContext context)
         {
+            _context = context;
+        }
+
+        /// <summary>
+        /// Get trades
+        /// </summary>
+        [Route("")]
+        [HttpGet]
+        public async Task<IEnumerable<string>> GetAsync()
+        {
+
+            ProductTradeService productTrade = new ProductTradeService(_context);
+
+            await productTrade.Create(new ProductTrade(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
+
             return new string[] { "value1", "value2" };
       
-
         }
 
         // GET api/<TradeController>/5
