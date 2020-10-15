@@ -14,20 +14,14 @@ namespace TradeManager.Api.Controllers
     [ApiController]
     public class TradeController : ControllerBase
     {
-        private readonly DbContext _tradeContext;
-
-        public TradeController(DbContext context)
-        {
-            _tradeContext = context;
-        }
+       
 
         // GET: api/<TradeController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-
-            
+      
         }
 
         // GET api/<TradeController>/5
