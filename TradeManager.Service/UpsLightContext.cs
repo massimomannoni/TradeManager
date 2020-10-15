@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TradeManager.Application.Models.Trades;
+using TradeManager.Service.Models;
 
-namespace TradeManager.Service.
+namespace TradeManager.Service
 {
     public class UpsLightContext : DbContext
     {
-        public DbSet<Trade> Trade { get; set; }
+        public DbSet<ProductTrade> ProductTrade { get; set; }
 
         public UpsLightContext (DbContextOptions options) : base(options)
         {
