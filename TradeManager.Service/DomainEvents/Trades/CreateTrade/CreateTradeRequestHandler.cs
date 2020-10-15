@@ -1,7 +1,7 @@
-﻿using MediatR;
+﻿
 using Microsoft.EntityFrameworkCore;
 using System;
-
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using TradeManager.Service.Domain.Trade;
 using TradeManager.Service.Models;
@@ -11,18 +11,17 @@ namespace TradeManager.Service.Trades.CreateTrade
 {
     public class ProductTradeService : Entity
     {
-        private readonly DbContext _dbContext;
-        public ProductTradeService(DbContext dbContext)
+        private readonly UpsLightContext _upsLightContext;
+        public ProductTradeService(UpsLightContext upsLightContext)
         {
-            _dbContext = dbContext;
+            _upsLightContext = upsLightContext;
         }
-        public async Task<Guid> Create()
+        public async Task<Guid> Create(ProductTrade newTrade)
         {
+            // store the object
+            _upsLightContext.ProductTrade.Add(newTrade);
 
-            var newTrade = new ProductTrade(request.Name, request.Type, request.Details, request.SchemaId, request.PortfolioId);
-
-            await _dbContext.AddAsync(newTrade);
-
+            // raise domain events
             AddDomainEvent(new TradeRegisteredEvent(newTrade));
 
             return newTrade.Id;

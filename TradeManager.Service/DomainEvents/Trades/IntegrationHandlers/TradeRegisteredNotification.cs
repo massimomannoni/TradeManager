@@ -2,8 +2,7 @@
 using System;
 using TradeManager.Service.Domain.Trade;
 using TradeManager.Service.Models;
-
-
+using TradeManager.Service.Domain.Events;
 
 namespace TradeManager.Service.Trades.IntegrationHandlers
 {

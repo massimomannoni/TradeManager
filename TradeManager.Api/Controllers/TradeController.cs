@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TradeManager.Service;
+using TradeManager.Service.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +23,7 @@ namespace TradeManager.Api.Controllers
         {
             return new string[] { "value1", "value2" };
       
+
         }
 
         // GET api/<TradeController>/5
@@ -33,8 +35,9 @@ namespace TradeManager.Api.Controllers
 
         // POST api/<TradeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] ProductTrade trade)
         {
+            
         }
 
         // PUT api/<TradeController>/5
