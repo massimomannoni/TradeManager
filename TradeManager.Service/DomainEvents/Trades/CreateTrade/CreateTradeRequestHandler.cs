@@ -24,6 +24,7 @@ namespace TradeManager.Service.Trades.CreateTrade
             // store the object
             await _context.ProductTrade.AddAsync(newTrade);
 
+            // save changes
             await _context.SaveChangesAsync();
     
             // raise domain events
