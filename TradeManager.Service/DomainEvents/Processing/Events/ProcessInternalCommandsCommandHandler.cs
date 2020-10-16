@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -21,7 +22,13 @@ namespace TradeManager.Service.Processing.Events
 
             // get events(commands) to be processed
             // invoke executor passing the payload
-           
+
+            var commandList = _context.EventStore.Where(x => x.ProcessedDate == null).ToList();
+
+            foreach (var item in commandList)
+            {
+                // invoke command executor
+            }
 
             return Unit.Value;
         }
