@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TradeManager.Api.Model.Requests;
 using TradeManager.Service;
 using TradeManager.Service.Models;
 using TradeManager.Service.Trades.CreateTrade;
@@ -28,7 +29,7 @@ namespace TradeManager.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<string>> GetAsync()
         {
-
+            // 
             ProductTradeService productTrade = new ProductTradeService(_context);
 
             await productTrade.Create(new ProductTrade(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
@@ -46,9 +47,16 @@ namespace TradeManager.Api.Controllers
 
         // POST api/<TradeController>
         [HttpPost]
-        public void Post([FromBody] ProductTrade trade)
+        public void Post([FromBody] CreateTradeRequest request)
         {
-            
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
         // PUT api/<TradeController>/5

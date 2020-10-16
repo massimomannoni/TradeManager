@@ -14,6 +14,7 @@ namespace TradeManager.Service.Trades.CreateTrade
     {
 
         private readonly UpsLightContext _context;
+
         public ProductTradeService(UpsLightContext context)
         {
             _context = context;
