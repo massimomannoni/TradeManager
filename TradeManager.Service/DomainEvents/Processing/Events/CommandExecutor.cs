@@ -12,7 +12,12 @@ namespace TradeManager.Service.DomainEvents.Processing.Events
         public static async Task Execute(ICommand command)
         {
             // need to resolve the IMediator
-            // use the mediator to send the command
+            // from container, then
+            // use the mediator to send the commands
+            // the commands (ask a classes) are managed by an handler
+            // 
+
+            // that means we need to inject into service project all dependencies we need
            
         }
     }
