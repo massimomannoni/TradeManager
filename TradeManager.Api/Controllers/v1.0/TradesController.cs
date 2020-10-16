@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TradeManager.Api.Model.Requests;
@@ -45,18 +46,19 @@ namespace TradeManager.Api.Controllers
             return "value";
         }
 
-        // POST api/<TradeController>
+        [Route("")]
         [HttpPost]
-        public void Post([FromBody] CreateTradeRequest request)
+        [ProducesResponseType(typeof(Guid), (int)HttpStatusCode.Created)]
+        public async Task<IActionResult> Post([FromBody] CreateTradeRequest request)
         {
-            try
-            {
+            
+               
+            ProductTradeService productTrade = new ProductTradeService(_context);
 
-            }
-            catch (Exception)
-            {
-                
-            }
+            Guid id = await productTrade.Create(new ProductTrade(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
+            
+    
+            return Created(string.Empty, id);
         }
 
         // PUT api/<TradeController>/5
