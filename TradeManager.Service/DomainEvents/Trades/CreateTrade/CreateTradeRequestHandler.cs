@@ -28,7 +28,7 @@ namespace TradeManager.Service.Trades.CreateTrade
             // save changes
             await _context.SaveChangesAsync();
     
-            // raise domain events
+            // 1) raise domain events
             AddDomainEvent(new TradeRegisteredEvent(newTrade));
 
             return newTrade.Id;

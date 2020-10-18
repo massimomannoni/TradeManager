@@ -18,6 +18,8 @@ namespace TradeManager.Service.DomainEvents.Processing.Events
         }
         public async Task EnqueueAsync<T>(ICommand<T> command)
         {
+            // 3) domain events persistance handler
+
             var domainEvent = new EventStore();
             domainEvent.Id = command.Id;
             domainEvent.EnqueueDate = DateTime.UtcNow;
