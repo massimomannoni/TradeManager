@@ -5,7 +5,7 @@ using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Configuration.Processing;
 using TradeManager.Service.Model;
 
-namespace TradeManager.Service.DomainEvents.Processing.Events
+namespace TradeManager.Service.Processing
 {
 
     // verify context injection

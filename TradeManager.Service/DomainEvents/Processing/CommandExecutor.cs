@@ -1,11 +1,12 @@
-﻿using MediatR;
+﻿using Autofac;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TradeManager.Service.Configuration.Commands;
 
-namespace TradeManager.Service.DomainEvents.Processing.Events
+namespace TradeManager.Service.Processing
 {
     public static class CommandExecutor
     {
@@ -18,7 +19,11 @@ namespace TradeManager.Service.DomainEvents.Processing.Events
             // 
 
             // that means we need to inject into service project all dependencies we need
-           
+            using (var scope = CompositionRoot.BeginLifetimeScope())
+            {
+                var mediator = scope.Resolve<IMediator>();
+                await mediator.Send(command);
+            }
         }
     }
 }
