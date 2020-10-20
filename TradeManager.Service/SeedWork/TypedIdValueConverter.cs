@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
+using radeManager.Service.SeedWork;
 
 namespace TradeManager.Service.SeedWork
 {

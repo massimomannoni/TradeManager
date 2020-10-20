@@ -52,7 +52,7 @@ namespace TradeManager.Service
 
             var container = new ContainerBuilder();
 
-            // need quartz autofac module
+            container.RegisterModule(new QuartzModule());
             container.RegisterModule(new MediatorModule());
             container.RegisterModule(new ProcessingModule());
 
