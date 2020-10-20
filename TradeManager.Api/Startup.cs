@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TradeManager.Service;
+using TradeManager.Service.DomainEvents.Processing;
 
 namespace TradeManager.Api
 {
@@ -24,14 +26,19 @@ namespace TradeManager.Api
 
         public IConfiguration Configuration { get; }
 
+
+    
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
             services.AddDbContext<UpsLightContext>(options =>
                   options.UseSqlServer(Configuration.GetConnectionString("UpsLightDb")));
-            
+
+            // pass the services to Service project
+            return ApplicationStartup.Inizialize(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
