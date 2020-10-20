@@ -25,5 +25,14 @@ namespace TradeManager.Service.Processing
                 await mediator.Send(command);
             }
         }
+
+        public static async Task<TResult> Execute<TResult>(ICommand<TResult> command)
+        {
+            using (var scope = CompositionRoot.BeginLifetimeScope())
+            {
+                var mediator = scope.Resolve<IMediator>();
+                return await mediator.Send(command);
+            }
+        }
     }
 }
