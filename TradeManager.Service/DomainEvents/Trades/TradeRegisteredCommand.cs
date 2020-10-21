@@ -9,11 +9,11 @@ namespace TradeManager.Service.DomainEvents.Trades
     public class TradeRegisteredCommand : InternalCommandBase<Unit>
     {
         [JsonConstructor]
-        public TradeRegisteredCommand(Guid id, ProductTrade trade) : base(id)
+        public TradeRegisteredCommand(Guid id, Guid tradeId) : base(id)
         {
-            Trade = trade;
+            TradeId = tradeId;
         }
 
-        public ProductTrade Trade { get; }
+        public Guid TradeId { get; }
     }
 }

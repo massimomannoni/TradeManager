@@ -6,11 +6,11 @@ namespace TradeManager.Service.Domain.Trade
 {
     public class  TradeRegisteredEvent : DomainEventBase
     {
-        public ProductTrade Trade { get; }
+        public Guid TradeId { get; }
 
-        public TradeRegisteredEvent(ProductTrade trade)
+        public TradeRegisteredEvent(Guid tradeId)
         {
-            Trade = trade;
+            TradeId = tradeId;
         }
     }
 }

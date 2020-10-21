@@ -29,7 +29,7 @@ namespace TradeManager.Service.Trades.CreateTrade
             await _context.SaveChangesAsync();
     
             // 1) raise domain events
-            AddDomainEvent(new TradeRegisteredEvent(newTrade));
+            AddDomainEvent(new TradeRegisteredEvent(newTrade.Id));
 
             return newTrade.Id;
         }

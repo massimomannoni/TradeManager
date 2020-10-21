@@ -87,7 +87,7 @@ namespace TradeManager.Service
                 TriggerBuilder
                     .Create()
                     .StartNow()
-                    .WithCronSchedule("0/5 * * ? * *")
+                    .WithCronSchedule("0/15 * * ? * *")
                     .Build();
             scheduler.ScheduleJob(processInternalCommandsJob, triggerCommandsProcessing).GetAwaiter().GetResult();
 

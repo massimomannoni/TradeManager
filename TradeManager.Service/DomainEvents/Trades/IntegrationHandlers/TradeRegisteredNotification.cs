@@ -8,17 +8,17 @@ namespace TradeManager.Service.Trades.IntegrationHandlers
 {
     public class TradeRegisteredNotification : DomainNotificationBase<TradeRegisteredEvent>
     {
-        public ProductTrade Trade { get; }
+        public Guid TradeId { get; }
 
         public TradeRegisteredNotification(TradeRegisteredEvent domainEvent) : base(domainEvent)
         {
-            Trade = domainEvent.Trade;
+            TradeId = domainEvent.TradeId;
         }
 
         [JsonConstructor]
-        public TradeRegisteredNotification(ProductTrade trade) : base(null)
+        public TradeRegisteredNotification(Guid tradeId) : base(null)
         {
-            Trade = trade;
+            TradeId = tradeId;
         }
     }
 }

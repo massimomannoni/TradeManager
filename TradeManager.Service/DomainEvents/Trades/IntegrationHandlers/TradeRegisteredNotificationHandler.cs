@@ -21,7 +21,7 @@ namespace TradeManager.Service.Trades.IntegrationHandlers
 
             // 2) handles domain events raised
 
-            await _commandsScheduler.EnqueueAsync(new TradeRegisteredCommand(Guid.NewGuid(), notification.Trade));
+            await _commandsScheduler.EnqueueAsync(new TradeRegisteredCommand(Guid.NewGuid(), notification.TradeId));
         }
     }
 }
