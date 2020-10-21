@@ -12,23 +12,32 @@ using TradeManager.Service.SeedWork;
 using TradeManager.Infrastructure.Quartz;
 using Quartz;
 using TradeManager.Service.Processing.Events;
+using TradeManager.Service.Configuration;
 
 namespace TradeManager.Service
 {
     public class ApplicationStartup
     {
-        public static IServiceProvider Inizialize(IServiceCollection services)
+        public static IServiceProvider Inizialize(IServiceCollection services, IExecutionContextAccessor executionContextAccessor, bool runQuartz = true)
         {
-            return RegisterServiceProvider(services);
+            if (runQuartz)
+            {
+                StartJobScheduler();
+            }
+
+            return RegisterServiceProvider(services, executionContextAccessor);
         }
 
-        private static IServiceProvider RegisterServiceProvider(IServiceCollection services)
+        private static IServiceProvider RegisterServiceProvider(IServiceCollection services, IExecutionContextAccessor executionContextAccessor)
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.Populate(services);
 
             containerBuilder.RegisterModule(new MediatorModule());
             containerBuilder.RegisterModule(new ProcessingModule());
+
+
+            containerBuilder.RegisterInstance(executionContextAccessor);
 
             // need register moduls
             // in this context the module we need is the mediator to process the internal domain commands

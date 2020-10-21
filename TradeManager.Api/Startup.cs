@@ -1,19 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using TradeManager.API.Configuration;
 using TradeManager.Service;
-using TradeManager.Service.DomainEvents.Processing;
+using TradeManager.Service.Configuration;
 
 namespace TradeManager.Api
 {
@@ -37,8 +32,14 @@ namespace TradeManager.Api
             services.AddDbContext<UpsLightContext>(options =>
                   options.UseSqlServer(Configuration.GetConnectionString("UpsLightDb")));
 
+            services.AddHttpContextAccessor();
+            var serviceProvider = services.BuildServiceProvider();
+
+            IExecutionContextAccessor executionContextAccessor = new ExecutionContextAccessor(serviceProvider.GetService<IHttpContextAccessor>());
+
+
             // pass the services to Service project
-            return ApplicationStartup.Inizialize(services);
+            return ApplicationStartup.Inizialize(services, executionContextAccessor);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
