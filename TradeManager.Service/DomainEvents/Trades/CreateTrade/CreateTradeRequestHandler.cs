@@ -32,8 +32,6 @@ namespace TradeManager.Service.Trades.CreateTrade
             // store the object
             await _context.ProductTrade.AddAsync(newTrade);
 
-            await _context.SaveChangesAsync();
-
             var command =  new TradeRegisteredCommand(Guid.NewGuid(), newTrade.TradeId);
 
             var domainEvent = new EventStore();

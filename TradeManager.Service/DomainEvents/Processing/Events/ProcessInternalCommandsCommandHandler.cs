@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using TradeManager.Service.Configuration.Commands;
 
@@ -27,15 +25,15 @@ namespace TradeManager.Service.Processing.Events
 
             var commandList = _context.EventStore.Where(x => x.ProcessedDate == null);
 
-    
+
             foreach (var item in commandList)
             {
                 // invoke command executor
                 Type type = Assemblies.Application.GetType(item.Type);
                 dynamic commandToProcess = JsonConvert.DeserializeObject(item.Data, type);
 
-               //  await CommandExecutor.Execute(commandToProcess);
-            $
+                await CommandExecutor.Execute(commandToProcess);
+            }
 
             return Unit.Value;
         }
