@@ -22,7 +22,7 @@ namespace TradeManager.Service
         {
             if (runQuartz)
             {
-                StartJobScheduler();
+                StartJobScheduler(executionContextAccessor);
             }
 
             return RegisterServiceProvider(services, executionContextAccessor);
@@ -54,7 +54,7 @@ namespace TradeManager.Service
             return autofacServiceProvider;
         }
 
-        private static void StartJobScheduler()
+        private static void StartJobScheduler(IExecutionContextAccessor executionContextAccessor)
         {
             var schedulerFactory = new StdSchedulerFactory();
             var scheduler = schedulerFactory.GetScheduler().GetAwaiter().GetResult();
@@ -65,6 +65,7 @@ namespace TradeManager.Service
             container.RegisterModule(new MediatorModule());
             container.RegisterModule(new ProcessingModule());
 
+            container.RegisterInstance(executionContextAccessor);
             container.Register(c =>
             {
                 var dbContextOptionsBuilder = new DbContextOptionsBuilder<UpsLightContext>();
