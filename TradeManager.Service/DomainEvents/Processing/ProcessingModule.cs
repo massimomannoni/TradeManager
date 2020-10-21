@@ -21,6 +21,8 @@ namespace TradeManager.Service.DomainEvents.Processing
                 typeof(DomainEventsDispatcherNotificationHandlerDecorator<>),
                 typeof(INotificationHandler<>));
 
+
+
             builder.RegisterGenericDecorator(
                 typeof(UnitOfWorkCommandHandlerDecorator<>),
                 typeof(ICommandHandler<>));
