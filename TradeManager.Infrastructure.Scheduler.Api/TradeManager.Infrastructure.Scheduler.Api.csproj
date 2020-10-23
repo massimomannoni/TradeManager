@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TradeManager.Service\TradeManager.Service.csproj" />
+    <ProjectReference Include="..\TradeManager.Domain\TradeManager.Domain.csproj" />
   </ItemGroup>
 
 </Project>

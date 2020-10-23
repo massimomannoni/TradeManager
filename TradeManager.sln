@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Api", "TradeManager.Api\TradeManager.Api.csproj", "{3BC3B3D7-6372-4A7A-8AC9-EBA7CC006A01}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Domain", "TradeManager.Domain\TradeManager.Domain.csproj", "{2FEDAE5E-1EDD-464B-8D10-6E5FF78B210E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Service", "TradeManager.Service\TradeManager.Service.csproj", "{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Infrastructure", "TradeManager.Infrastructure\TradeManager.Infrastructure.csproj", "{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeManager.Infrastructure.Scheduler.Api", "TradeManager.Infrastructure.Scheduler.Api\TradeManager.Infrastructure.Scheduler.Api.csproj", "{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeManager.Api", "TradeManager.Api\TradeManager.Api.csproj", "{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BC3B3D7-6372-4A7A-8AC9-EBA7CC006A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BC3B3D7-6372-4A7A-8AC9-EBA7CC006A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BC3B3D7-6372-4A7A-8AC9-EBA7CC006A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BC3B3D7-6372-4A7A-8AC9-EBA7CC006A01}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FEDAE5E-1EDD-464B-8D10-6E5FF78B210E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FEDAE5E-1EDD-464B-8D10-6E5FF78B210E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FEDAE5E-1EDD-464B-8D10-6E5FF78B210E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,10 +25,14 @@ Global
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

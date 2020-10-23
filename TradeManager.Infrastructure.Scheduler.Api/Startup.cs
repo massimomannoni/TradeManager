@@ -1,18 +1,19 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using TradeManager.API.Configuration;
-using TradeManager.Service.Configuration;
-using TradeManager.Service.Infrastructure.Database;
-using TradeManager.Service.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using TradeManager.Infrastructure.Scheduler.Database;
 
-namespace TradeManager.Api
+namespace TradeManager.Infrastructure.Scheduler.Api
 {
     public class Startup
     {
@@ -23,27 +24,17 @@ namespace TradeManager.Api
 
         public IConfiguration Configuration { get; }
 
-
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<UpsLightContext>(options =>
-                  options.UseSqlServer(Configuration.GetConnectionString("UpsLightDb")));
-
-            services.AddHttpContextAccessor();
-            var serviceProvider = services.BuildServiceProvider();
-
-            IExecutionContextAccessor executionContextAccessor = new ExecutionContextAccessor(serviceProvider.GetService<IHttpContextAccessor>());
-
-
-            // pass the services to Service project
-            return ApplicationStartup.Inizialize(services, executionContextAccessor);
+            services.AddDbContext<UpsLightJobContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UpsLightJobDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
