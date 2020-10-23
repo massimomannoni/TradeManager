@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Servuce.Infrastructure.Processing.InternalCommand
+namespace TradeManager.Service.Infrastructure.Processing.InternalCommand
 {
     internal class ProcessInternalCommandsCommandHandler : ICommandHandler<ProcessInternalCommandsCommand, Unit>
     {

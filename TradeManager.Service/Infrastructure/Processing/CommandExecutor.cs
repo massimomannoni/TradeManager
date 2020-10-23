@@ -3,7 +3,7 @@ using MediatR;
 using System.Threading.Tasks;
 using TradeManager.Service.Configuration.Commands;
 
-namespace TradeManager.Servuce.Infrastructure.Processing
+namespace TradeManager.Service.Infrastructure.Processing
 {
     public static class CommandExecutor
     {

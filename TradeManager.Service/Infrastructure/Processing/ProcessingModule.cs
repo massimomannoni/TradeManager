@@ -3,8 +3,8 @@ using Autofac;
 using MediatR;
 using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Configuration.Processing;
-using TradeManager.Servuce.Infrastructure.Processing;
-using TradeManager.Servuce.Infrastructure.Processing.InternalCommand;
+using TradeManager.Service.Infrastructure.Processing;
+using TradeManager.Service.Infrastructure.Processing.InternalCommand;
 
 namespace TradeManager.Service.DomainEvents.Processing
 {

@@ -7,8 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TradeManager.API.Configuration;
-using TradeManager.Service;
 using TradeManager.Service.Configuration;
+using TradeManager.Service.Infrastructure.Database;
+using TradeManager.Service.Infrastructure;
 
 namespace TradeManager.Api
 {

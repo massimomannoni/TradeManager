@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Servuce.Infrastructure.Processing.InternalCommand
+namespace TradeManager.Service.Infrastructure.Processing.InternalCommand
 {
     public class CommandsDispatcher : ICommandsDispatcher
     {

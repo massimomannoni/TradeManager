@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 
-namespace TradeManager.Servuce.Infrastructure.Processing
+namespace TradeManager.Service.Infrastructure.Processing
 {
     public class DomainEventsDispatcherNotificationHandlerDecorator<T> : INotificationHandler<T> where T : INotification
     {

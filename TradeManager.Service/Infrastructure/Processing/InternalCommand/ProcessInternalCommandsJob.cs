@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Quartz;
 
-namespace TradeManager.Servuce.Infrastructure.Processing.InternalCommand
+namespace TradeManager.Service.Infrastructure.Processing.InternalCommand
 {
     [DisallowConcurrentExecution]
     public class ProcessInternalCommandsJob : IJob

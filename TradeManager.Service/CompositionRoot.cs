@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace TradeManager.Servuce.Infrastructure
+namespace TradeManager.Service.Infrastructure
 {
     public static class CompositionRoot
     {

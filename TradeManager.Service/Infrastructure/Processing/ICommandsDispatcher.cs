@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace TradeManager.Servuce.Infrastructure.Processing
+namespace TradeManager.Service.Infrastructure.Processing
 {
     public interface ICommandsDispatcher
     {

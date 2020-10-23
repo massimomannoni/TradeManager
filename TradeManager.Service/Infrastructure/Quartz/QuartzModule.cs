@@ -3,7 +3,7 @@ using Autofac;
 using Quartz;
 using Module = Autofac.Module;
 
-namespace TradeManager.Servuce.Infrastructure.Quartz
+namespace TradeManager.Service.Infrastructure.Quartz
 {
     public class QuartzModule : Module
     {

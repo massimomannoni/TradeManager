@@ -6,7 +6,7 @@ using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Configuration.Processing;
 using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Servuce.Infrastructure.Processing
+namespace TradeManager.Service.Infrastructure.Processing
 {
 
     // verify context injection

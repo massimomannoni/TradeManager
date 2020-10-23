@@ -7,7 +7,7 @@ using TradeManager.Domain.SeedWork;
 using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Servuce.Infrastructure.Processing
+namespace TradeManager.Service.Infrastructure.Processing
 {
     public class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T> where T:ICommand
     {
