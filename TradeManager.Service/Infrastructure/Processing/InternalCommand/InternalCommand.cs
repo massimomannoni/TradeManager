@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TradeManager.Infrastructure.Processing.InternalCommand
+namespace TradeManager.Servuce.Infrastructure.Processing.InternalCommand
 {
     public class InternalCommand
     {

@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using MediatR;
-using Newtonsoft.Json;
 using TradeManager.Domain.SeedWork;
-using TradeManager.Infrastructure.Database;
 using TradeManager.Service.Configuration.DomainEvents;
+using TradeManager.Service.Infrastructure.Database;
 
-
-namespace TradeManager.Infrastructure.Processing
+namespace TradeManager.Servuce.Infrastructure.Processing
 {
     public class DomainEventsDispatcher : IDomainEventsDispatcher
     {

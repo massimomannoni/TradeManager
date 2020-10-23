@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
-using TradeManager.Service.DomainEvents.Trades;
 
-namespace TradeManager.Infrastructure.Processing
+namespace TradeManager.Servuce.Infrastructure.Processing
 {
     internal static class Assemblies
     {

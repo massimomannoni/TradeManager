@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TradeManager.Infrastructure.Processing
+namespace TradeManager.Servuce.Infrastructure.Processing
 {
     public interface IDomainEventsDispatcher
     {

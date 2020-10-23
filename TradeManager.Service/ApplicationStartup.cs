@@ -8,12 +8,14 @@ using TradeManager.Service.DomainEvents.Processing;
 using Quartz.Impl;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TradeManager.Infrastructure.Quartz;
+using TradeManager.Servuce.Infrastructure.Quartz;
 using Quartz;
-using TradeManager.Infrastructure.Processing.InternalCommand;
-using TradeManager.Infrastructure.Database;
+using TradeManager.Servuce.Infrastructure.Processing.InternalCommand;
+using TradeManager.Service.Configuration;
+using TradeManager.Service.Infrastructure.Database;
+using TradeManager.Servuce.Infrastructure.SeedWork;
 
-namespace TradeManager.Service
+namespace TradeManager.Servuce.Infrastructure
 {
     public class ApplicationStartup
     {

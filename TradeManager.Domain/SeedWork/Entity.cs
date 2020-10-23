@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TradeManager.Service.Configuration.DomainEvents;
 
-namespace TradeManager.Service.SeedWork
+namespace TradeManager.Domain.SeedWork
 {
     /// <summary>
     /// Base class for entities.

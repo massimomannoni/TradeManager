@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
+using TradeManager.Domain.Models;
 using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Configuration.Processing;
-using TradeManager.Service.Model;
+using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Infrastructure.Processing
+namespace TradeManager.Servuce.Infrastructure.Processing
 {
 
     // verify context injection

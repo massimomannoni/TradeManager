@@ -2,10 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TradeManager.Domain.SeedWork;
 using TradeManager.Service.Configuration.Commands;
-using TradeManager.Service.SeedWork;
+using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Infrastructure.Processing
+namespace TradeManager.Servuce.Infrastructure.Processing
 {
     public class UnitOfWorkCommandHandlerWithResultDecorator<T, TResult> : ICommandHandler<T, TResult> where T : ICommand<TResult>
     {

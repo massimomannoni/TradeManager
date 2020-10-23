@@ -4,9 +4,11 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TradeManager.Api.Model.Requests;
-using TradeManager.Service;
-using TradeManager.Service.Models;
+using TradeManager.Domain.Models;
+using TradeManager.Service.Infrastructure.Database;
 using TradeManager.Service.Trades.CreateTrade;
+
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -3,11 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using TradeManager.Infrastructure.Database;
+using TradeManager.Domain.SeedWork;
 using TradeManager.Service.Configuration.Commands;
-using TradeManager.Service.SeedWork;
+using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Infrastructure.Processing
+namespace TradeManager.Servuce.Infrastructure.Processing
 {
     public class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T> where T:ICommand
     {

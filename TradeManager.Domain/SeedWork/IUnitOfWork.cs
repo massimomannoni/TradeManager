@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace TradeManager.Service.SeedWork
+namespace TradeManager.Domain.SeedWork
 {
     public interface IUnitOfWork
     {

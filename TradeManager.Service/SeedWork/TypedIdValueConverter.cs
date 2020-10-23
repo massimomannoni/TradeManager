@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TradeManager.Infrastructure.SeedWork;
+using TradeManager.Servuce.Infrastructure.SeedWork;
 
-namespace TradeManager.Infrastructure.SeedWork
+namespace TradeManager.Servuce.Infrastructure.SeedWork
 {
     public class TypedIdValueConverter<TTypedIdValue> : ValueConverter<TTypedIdValue, Guid>
         where TTypedIdValue : TypedIdValueBase

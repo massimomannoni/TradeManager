@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace radeManager.Service.SeedWork
+namespace TradeManager.Infrastructure.SeedWork
 {
     public abstract class TypedIdValueBase : IEquatable<TypedIdValueBase>
     {

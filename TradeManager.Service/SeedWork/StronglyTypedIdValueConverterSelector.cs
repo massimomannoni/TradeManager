@@ -2,9 +2,9 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TradeManager.Infrastructure.SeedWork;
+using TradeManager.Servuce.Infrastructure.SeedWork;
 
-namespace TradeManager.Infrastructure.SeedWork
+namespace TradeManager.Servuce.Infrastructure.SeedWork
 {
     /// <summary>
     /// Based on https://andrewlock.net/strongly-typed-ids-in-ef-core-using-strongly-typed-entity-ids-to-avoid-primitive-obsession-part-4/

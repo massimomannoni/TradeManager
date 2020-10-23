@@ -3,8 +3,8 @@ using Autofac;
 using MediatR;
 using TradeManager.Service.Configuration.Commands;
 using TradeManager.Service.Configuration.Processing;
-using TradeManager.Infrastructure.Processing;
-using TradeManager.Infrastructure.Processing.Events;
+using TradeManager.Servuce.Infrastructure.Processing;
+using TradeManager.Servuce.Infrastructure.Processing.InternalCommand;
 
 namespace TradeManager.Service.DomainEvents.Processing
 {
@@ -21,8 +21,6 @@ namespace TradeManager.Service.DomainEvents.Processing
                 typeof(DomainEventsDispatcherNotificationHandlerDecorator<>),
                 typeof(INotificationHandler<>));
 
-
-
             builder.RegisterGenericDecorator(
                 typeof(UnitOfWorkCommandHandlerDecorator<>),
                 typeof(ICommandHandler<>));
@@ -30,7 +28,6 @@ namespace TradeManager.Service.DomainEvents.Processing
             builder.RegisterGenericDecorator(
                 typeof(UnitOfWorkCommandHandlerWithResultDecorator<,>),
                 typeof(ICommandHandler<,>));
-
 
             builder.RegisterType<CommandsDispatcher>()
                 .As<ICommandsDispatcher>()

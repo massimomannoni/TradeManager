@@ -1,6 +1,5 @@
 ﻿using System;
-using TradeManager.Service.SeedWork;
-using TradeManager.Service.Models;
+using TradeManager.Domain.SeedWork;
 
 namespace TradeManager.Service.Domain.Trade
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using TradeManager.Service.Configuration.DomainEvents;
 
-namespace TradeManager.Service.SeedWork
+namespace TradeManager.Domain.SeedWork
 {
     public class DomainEventBase : IDomainEvent
     {

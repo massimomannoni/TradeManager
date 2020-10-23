@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Newtonsoft.Json;
-using TradeManager.Infrastructure.Database;
 using TradeManager.Service.Configuration.Commands;
+using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Infrastructure.Processing.InternalCommand
+namespace TradeManager.Servuce.Infrastructure.Processing.InternalCommand
 {
     internal class ProcessInternalCommandsCommandHandler : ICommandHandler<ProcessInternalCommandsCommand, Unit>
     {

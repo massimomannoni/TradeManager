@@ -2,11 +2,9 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using TradeManager.Infrastructure.Database;
+using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Infrastructure.Processing.InternalCommand
+namespace TradeManager.Servuce.Infrastructure.Processing.InternalCommand
 {
     public class CommandsDispatcher : ICommandsDispatcher
     {
