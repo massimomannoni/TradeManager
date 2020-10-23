@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Coravel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace TradeManager.Infrastructure.Scheduler.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScheduler();
 
             services.AddDbContext<UpsLightJobContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UpsLightJobDb")));
@@ -45,6 +47,18 @@ namespace TradeManager.Infrastructure.Scheduler.Api
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            var provider = app.ApplicationServices;
+            provider.UseScheduler(scheduler =>
+            {
+                // add invocables
+                scheduler.Schedule(
+
+                    () => Console.WriteLine("Every minute during the week.")
+                )
+                .EveryMinute()
+                .Weekday();
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
