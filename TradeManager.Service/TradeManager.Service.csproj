@@ -18,4 +18,8 @@
     <ProjectReference Include="..\TradeManager.Domain\TradeManager.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configuration\Processing\" />
+  </ItemGroup>
+
 </Project>

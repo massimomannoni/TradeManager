@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TradeManager.Service.Infrastructure.Quartz;
 using Quartz;
-using TradeManager.Service.Infrastructure.Processing.InternalCommand;
 using TradeManager.Service.Configuration;
 using TradeManager.Service.Infrastructure.Database;
 using TradeManager.Service.Infrastructure.SeedWork;
@@ -35,7 +34,6 @@ namespace TradeManager.Service.Infrastructure
             containerBuilder.Populate(services);
 
             containerBuilder.RegisterModule(new MediatorModule());
-            containerBuilder.RegisterModule(new ProcessingModule());
 
 
             containerBuilder.RegisterInstance(executionContextAccessor);
@@ -64,7 +62,6 @@ namespace TradeManager.Service.Infrastructure
 
             container.RegisterModule(new QuartzModule());
             container.RegisterModule(new MediatorModule());
-            container.RegisterModule(new ProcessingModule());
 
             container.RegisterInstance(executionContextAccessor);
             container.Register(c =>
@@ -82,15 +79,7 @@ namespace TradeManager.Service.Infrastructure
 
             scheduler.Start().GetAwaiter().GetResult();
 
-            // https://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/crontriggers.html 
-            var processInternalCommandsJob = JobBuilder.Create<ProcessInternalCommandsJob>().Build();
-            var triggerCommandsProcessing =
-                TriggerBuilder
-                    .Create()
-                    .StartNow()
-                    .WithCronSchedule("0/15 * * ? * *")
-                    .Build();
-            scheduler.ScheduleJob(processInternalCommandsJob, triggerCommandsProcessing).GetAwaiter().GetResult();
+         
 
         }
     }
