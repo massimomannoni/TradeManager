@@ -3,7 +3,7 @@ using System.Net;
 using TradeManager.Service.Model;
 using TradeManager.Service.Models;
 
-namespace TradeManager.Service
+namespace TradeManager.Infrastructure.Database
 {
     public class UpsLightContext : DbContext
     {
@@ -12,6 +12,7 @@ namespace TradeManager.Service
         public DbSet<EventStore> EventStore { get; set; }
 
         protected UpsLightContext() { }
+
         public UpsLightContext (DbContextOptions options) : base(options)
         {
 

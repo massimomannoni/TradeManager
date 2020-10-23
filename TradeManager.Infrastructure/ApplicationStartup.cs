@@ -14,7 +14,7 @@ using Quartz;
 using TradeManager.Service.Processing.Events;
 using TradeManager.Service.Configuration;
 
-namespace TradeManager.Service
+namespace TradeManager.Infrastructure
 {
     public class ApplicationStartup
     {
