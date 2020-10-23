@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Domain", "Trad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Service", "TradeManager.Service\TradeManager.Service.csproj", "{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Infrastructure", "TradeManager.Infrastructure\TradeManager.Infrastructure.csproj", "{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56ED319-5D8F-47B3-84CB-77A4D969ADC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
