@@ -1,4 +1,5 @@
 ﻿using Coravel.Invocable;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace TradeManager.Infrastructure.Scheduler.Api.Processing
         public Task Invoke()
         {
             // write here the logic ;)
-
+            return Unit.Task;
         }
     }
 }

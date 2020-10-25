@@ -35,7 +35,7 @@ namespace TradeManager.Api.Controllers
             // 
             ProductTradeService productTrade = new ProductTradeService(_context);
 
-            await productTrade.Create(new ProductTrade(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
+            await productTrade.Create(new Trade(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
 
             return new string[] { "value1", "value2" };
       
@@ -57,7 +57,7 @@ namespace TradeManager.Api.Controllers
                
             ProductTradeService productTrade = new ProductTradeService(_context);
 
-            Guid id = await productTrade.Create(new ProductTrade(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
+            Guid id = await productTrade.Create(new Trade(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
             
     
             return Created(string.Empty, id);

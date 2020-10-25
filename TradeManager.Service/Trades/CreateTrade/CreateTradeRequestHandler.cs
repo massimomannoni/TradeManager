@@ -18,14 +18,14 @@ namespace TradeManager.Service.Trades.CreateTrade
             _context = context;
         }
 
-        public async Task<Guid> Create(ProductTrade newTrade)
+        public async Task<Guid> Create(Trade newTrade)
         {
-           
+
             // 1) raise domain events
             //AddDomainEvent(new TradeRegisteredEvent(newTrade.Id));
 
             // store the object
-            await _context.ProductTrade.AddAsync(newTrade);
+            await _context.Trade.AddAsync(newTrade);
 
             //var command =  new TradeRegisteredCommand(Guid.NewGuid(), newTrade.TradeId);
 
@@ -35,7 +35,7 @@ namespace TradeManager.Service.Trades.CreateTrade
             //domainEvent.Type = command.GetType().FullName;
             //domainEvent.Data = JsonConvert.SerializeObject(command);
 
-           // await _context.EventStore.AddAsync(domainEvent);
+            // await _context.EventStore.AddAsync(domainEvent);
 
             // save changes
             await _context.SaveChangesAsync();
