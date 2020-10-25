@@ -28,10 +28,15 @@ namespace TradeManager.Api.Controllers
         /// </summary>
         [Route("")]
         [HttpGet]
-        public string GetAsync()
+        public async Task<Guid> GetAsync()
         {
 
-            return "value";
+            ProductTradeService productTrade = new ProductTradeService(_context);
+
+            Guid id = await productTrade.Create(new CreateTradeRequest(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
+
+
+            return id;
         }
 
         // GET api/<TradeController>/5
