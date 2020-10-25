@@ -1,9 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using MediatR;
 using System;
 using System.Threading.Tasks;
-using TradeManager.Domain.Models;
+using TradeManager.Domain.Models.Trades;
 using TradeManager.Domain.SeedWork;
-using TradeManager.Service.Domain.Trade;
 using TradeManager.Service.Infrastructure.Database;
 
 namespace TradeManager.Service.Trades.CreateTrade
@@ -18,27 +17,24 @@ namespace TradeManager.Service.Trades.CreateTrade
             _context = context;
         }
 
-        public async Task<Guid> Create(Trade newTrade)
+        public async Task<Guid> Create(CreateTradeRequest request)
         {
 
-            // 1) raise domain events
-            //AddDomainEvent(new TradeRegisteredEvent(newTrade.Id));
-
+            // using request, create a domain/model object
+            var newTrade = new Trade(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.PortfolioId);
+            
             // store the object
             await _context.Trade.AddAsync(newTrade);
 
-            //var command =  new TradeRegisteredCommand(Guid.NewGuid(), newTrade.TradeId);
-
-            //var domainEvent = new EventStore();
-            //domainEvent.Id = command.Id;
-            //domainEvent.EnqueueDate = DateTime.UtcNow;
-            //domainEvent.Type = command.GetType().FullName;
-            //domainEvent.Data = JsonConvert.SerializeObject(command);
-
-            // await _context.EventStore.AddAsync(domainEvent);
-
             // save changes
             await _context.SaveChangesAsync();
+
+            // creatre and domain event
+
+            TradeRegisteredEvent tradeRegisteredEvent = new TradeRegisteredEvent(newTrade.Id);
+
+            // send domain event
+           // await _mediator.Publish(tradeRegisteredEvent);
 
             return newTrade.Id;
         }

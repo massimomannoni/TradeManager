@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TradeManager.Api.Model.Requests;
-using TradeManager.Domain.Models;
 using TradeManager.Service.Infrastructure.Database;
 using TradeManager.Service.Trades.CreateTrade;
 
@@ -30,15 +28,10 @@ namespace TradeManager.Api.Controllers
         /// </summary>
         [Route("")]
         [HttpGet]
-        public async Task<IEnumerable<string>> GetAsync()
+        public string GetAsync()
         {
-            // 
-            ProductTradeService productTrade = new ProductTradeService(_context);
 
-            await productTrade.Create(new Trade(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
-
-            return new string[] { "value1", "value2" };
-      
+            return "value";
         }
 
         // GET api/<TradeController>/5
@@ -51,13 +44,13 @@ namespace TradeManager.Api.Controllers
         [Route("")]
         [HttpPost]
         [ProducesResponseType(typeof(Guid), (int)HttpStatusCode.Created)]
-        public async Task<IActionResult> Post([FromBody] CreateTradeRequest request)
+        public async Task<IActionResult> Post([FromBody] Model.Requests.CreateTradeRequest request)
         {
             
                
             ProductTradeService productTrade = new ProductTradeService(_context);
 
-            Guid id = await productTrade.Create(new Trade(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
+            Guid id = await productTrade.Create(new CreateTradeRequest(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
             
     
             return Created(string.Empty, id);
