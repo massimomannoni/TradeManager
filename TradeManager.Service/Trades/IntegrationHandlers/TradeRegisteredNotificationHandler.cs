@@ -19,9 +19,9 @@ namespace SampleProject.Application.Customers.IntegrationHandlers
 
         public async Task Handle(TradeRegisteredNotification notification, CancellationToken cancellationToken)
         {
-            var tradeRegisteredEvent = Event.Create(DateTime.UtcNow, notification.DomainEvent.GetType().FullName, JsonConvert.SerializeObject(notification.DomainEvent));
+            var eventNotification = Job.Create(DateTime.UtcNow, notification.DomainEvent.GetType().FullName, JsonConvert.SerializeObject(notification.DomainEvent));
 
-            await _context.Event.AddAsync(tradeRegisteredEvent);
+            await _context.Event.AddAsync(eventNotification);
 
             await _context.SaveChangesAsync();
         }

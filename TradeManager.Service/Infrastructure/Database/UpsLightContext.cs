@@ -8,7 +8,7 @@ namespace TradeManager.Service.Infrastructure.Database
     {
         public DbSet<Trade> Trade { get; set; }
 
-        public DbSet<Event> Event { get; set; }
+        public DbSet<Job> Event { get; set; }
 
         protected UpsLightContext() { }
 
