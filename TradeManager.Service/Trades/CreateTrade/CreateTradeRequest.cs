@@ -5,17 +5,16 @@ namespace TradeManager.Service.Trades.CreateTrade
 {
     public class CreateTradeRequest
     {
-        private Guid productId1;
-        private Guid productId2;
+  
 
-        public CreateTradeRequest(DateTime date, Guid productId1, string details, Guid schemaId, Guid tradeId, Guid productId2)
+        public CreateTradeRequest(DateTime date, Guid productId, string details, Guid schemaId, Guid tradeId, Guid portfolioId)
         {
             Date = date;
-            this.productId1 = productId1;
+            ProductId = productId;
             Details = details;
             SchemaId = schemaId;
             TradeId = tradeId;
-            this.productId2 = productId2;
+            PortfolioId = portfolioId;
         }
 
         [Required]

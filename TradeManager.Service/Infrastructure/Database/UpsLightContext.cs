@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using TradeManager.Domain.Models.Events;
 using TradeManager.Domain.Models.Trades;
 
 namespace TradeManager.Service.Infrastructure.Database
@@ -8,7 +8,7 @@ namespace TradeManager.Service.Infrastructure.Database
     {
         public DbSet<Trade> Trade { get; set; }
 
-       // public DbSet<EventStore> EventStore { get; set; }
+        public DbSet<Event> Event { get; set; }
 
         protected UpsLightContext() { }
 

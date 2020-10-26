@@ -22,15 +22,23 @@ namespace TradeManager.Domain.Models.Trades
 
         public Guid PortfolioId { get; set; }
 
-        public Trade(DateTime date, Guid productId, string details, Guid schemaId, Guid tradeId, Guid portfolioId)
+        private Trade() { }
+
+        private Trade(DateTime date, Guid productId, string details, Guid schemaId, Guid tradeId, Guid portfolioId)
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
             Date = date;
             ProductId = productId;
             Details = details;
             SchemaId = schemaId;
             TradeId = schemaId;
             PortfolioId = portfolioId;
+        }
+        
+
+        public static Trade Create(DateTime date, Guid productId, string details, Guid schemaId, Guid tradeId, Guid portfolioId)
+        {
+            return new Trade( date,  productId,  details,  schemaId,  tradeId,  portfolioId);
         }
 
     }

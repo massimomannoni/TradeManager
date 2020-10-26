@@ -14,24 +14,18 @@ namespace TradeManager.Service.Trades.CreateTrade
     {
 
         private readonly UpsLightContext _context;
-        private readonly Mediator _mediator;
+
 
         public ProductTradeService(UpsLightContext context)
         {
             _context = context;
-
-
-            using (var scope = CompositionRoot.BeginLifetimeScope())
-            {
-                 _mediator = (Mediator)scope.Resolve<IMediator>();
-            }
         }
 
         public async Task<Guid> Create(CreateTradeRequest request)
         {
 
             // using request, create a domain/model object
-            var newTrade = new Trade(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.PortfolioId);
+            var newTrade = Trade.Create(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.PortfolioId);
             
             // store the object
             await _context.Trade.AddAsync(newTrade);
@@ -43,10 +37,14 @@ namespace TradeManager.Service.Trades.CreateTrade
 
             TradeRegisteredEvent tradeRegisteredEvent = new TradeRegisteredEvent(newTrade.Id);
 
-            TradeRegisteredNotification tradedeRegisteredNotification = new TradeRegisteredNotification(newTrade.Id);
+            TradeRegisteredNotification tradedeRegisteredNotification = new TradeRegisteredNotification(tradeRegisteredEvent);
 
-            await _mediator.Publish(tradedeRegisteredNotification);
-
+            using (var scope = CompositionRoot.BeginLifetimeScope())
+            {
+                var mediator = (Mediator)scope.Resolve<IMediator>();
+                await mediator.Publish(tradedeRegisteredNotification);
+            }
+     
             return newTrade.Id;
         }
 

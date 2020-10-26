@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Net;
 using TradeManager.Domain.Models;
-
+using TradeManager.Domain.Models.Events;
 
 namespace TradeManager.Infrastructure.Scheduler.Database
 {
     public class UpsLightJobContext : DbContext
     {
-        public DbSet<EventStore> EventStore { get; set; }
+        public DbSet<Event> Event { get; set; }
 
         protected UpsLightJobContext() { }
 

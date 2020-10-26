@@ -6,7 +6,7 @@ using TradeManager.Service.Infrastructure.Database;
 
 namespace TradeManager.Service.Infrastructure.Domain.Trades
 {
-    internal sealed class TradeEntityTypeConfiguration : IEntityTypeConfiguration<Trade>
+    internal sealed class EventEntityTypeConfiguration : IEntityTypeConfiguration<Trade>
     {
         public void Configure(EntityTypeBuilder<Trade> builder)
         {

@@ -31,7 +31,6 @@ namespace TradeManager.Service.Infrastructure
             // need register moduls
             // in this context the module we need is the mediator to process the internal domain commands
 
-
             var containerBuilded = containerBuilder.Build();
 
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(containerBuilded));
