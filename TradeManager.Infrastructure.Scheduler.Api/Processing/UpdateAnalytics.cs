@@ -1,11 +1,8 @@
 ﻿using Coravel.Invocable;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TradeManager.Domain.Models.Jobs;
 using TradeManager.Infrastructure.Scheduler.Database;
 
 namespace TradeManager.Infrastructure.Scheduler.Api.Processing
@@ -21,17 +18,24 @@ namespace TradeManager.Infrastructure.Scheduler.Api.Processing
 
         public async Task Invoke()
         {
-            Job firstJobInQueue = _context.Jobs.Where(x => x.EnqueueDate == null).FirstAsync().Result;
+            var jobInQueue = _context.Jobs.Where(x => x.ProcessedDate == null).Count();
+
+            if (jobInQueue < 1)
+                return;
+
+            var jobToProceed = await _context.Jobs.Where(x => x.ProcessedDate == null).OrderBy(d => d.EnqueueDate).FirstOrDefaultAsync();
 
 
-            /// do something
-            /// 
-            firstJobInQueue.ProcessedDate = DateTime.UtcNow;
-
-            await _context.SaveChangesAsync();
+            // do something here
 
 
-           
+            // when finished update the processDate
+            jobToProceed.ProcessedDate = DateTime.UtcNow;
+
+
+            //save a baci&abbracci ;)
+           await _context.SaveChangesAsync();
+
         }
     }
 }

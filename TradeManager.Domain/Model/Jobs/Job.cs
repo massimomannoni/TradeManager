@@ -16,7 +16,7 @@ namespace TradeManager.Domain.Models.Jobs
 
         public string Data { get; set; }
 
-        public DateTime ProcessedDate { get; set; }
+        public DateTime? ProcessedDate { get; set; }
 
         private Job()
         {

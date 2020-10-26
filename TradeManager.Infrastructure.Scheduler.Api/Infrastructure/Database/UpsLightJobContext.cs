@@ -16,7 +16,7 @@ namespace TradeManager.Infrastructure.Scheduler.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-   
+  
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(UpsLightJobContext).Assembly);
         }
     }

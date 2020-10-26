@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TradeManager.Infrastructure.Scheduler.Api.Processing;
 using TradeManager.Infrastructure.Scheduler.Database;
 
 namespace TradeManager.Infrastructure.Scheduler.Api
@@ -29,7 +30,10 @@ namespace TradeManager.Infrastructure.Scheduler.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddScheduler();
+
+            services.AddTransient<UpdateAnalytics>();
 
             services.AddDbContext<UpsLightJobContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UpsLightJobDb")));
@@ -52,10 +56,7 @@ namespace TradeManager.Infrastructure.Scheduler.Api
             provider.UseScheduler(scheduler =>
             {
                 // add invocables
-                scheduler.Schedule(
-
-                    () => Console.WriteLine("Every minute during the week.")
-                )
+                scheduler.Schedule<UpdateAnalytics>()
                 .EveryMinute()
                 .Weekday();
             });
