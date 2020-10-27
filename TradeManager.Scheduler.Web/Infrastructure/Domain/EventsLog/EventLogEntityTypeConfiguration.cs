@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TradeManager.Domain.Models.EventsLog;
-using TradeManager.Service.Infrastructure.Database;
 
-namespace TradeManager.Service.Infrastructure.Domain.Jobs
+namespace TradeManager.Scheduler.Infrastructure.Database.Domain.Jobs
 {
-    internal sealed class JobEntityTypeConfiguration : IEntityTypeConfiguration<EventLog>
+    internal sealed class EventLogEntityTypeConfiguration : IEntityTypeConfiguration<EventLog>
     {
         public void Configure(EntityTypeBuilder<EventLog> builder)
         {
-            builder.ToTable("Jobs", Schemas.Event);
+            builder.ToTable("EventsLog", Schemas.Event);
 
             builder.HasKey(b => b.Id);
         }
