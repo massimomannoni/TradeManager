@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Coravel;
+﻿using Coravel;
+using Coravel.Pro;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using TradeManager.Infrastructure.Scheduler.Api.Processing;
 using TradeManager.Infrastructure.Scheduler.Database;
 
@@ -31,7 +25,7 @@ namespace TradeManager.Infrastructure.Scheduler.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddScheduler();
+            services.AddCoravelPro(typeof(UpsLightJobContext));
 
             services.AddTransient<UpdateAnalytics>();
 

@@ -39,6 +39,7 @@ namespace TradeManager.Service.Trades.CreateTrade
 
             TradeRegisteredNotification tradedeRegisteredNotification = new TradeRegisteredNotification(tradeRegisteredEvent);
 
+            // find alternative
             using (var scope = CompositionRoot.BeginLifetimeScope())
             {
                 var mediator = (Mediator)scope.Resolve<IMediator>();
@@ -46,6 +47,8 @@ namespace TradeManager.Service.Trades.CreateTrade
             }
      
             return newTrade.Id;
+
+
         }
 
     }

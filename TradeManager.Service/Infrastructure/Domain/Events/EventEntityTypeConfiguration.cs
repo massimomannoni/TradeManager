@@ -12,6 +12,9 @@ namespace TradeManager.Service.Infrastructure.Domain.Events
             builder.ToTable("Events", Schemas.Event);
 
             builder.HasKey(b => b.Id);
+
+
+
         }
     }
 }

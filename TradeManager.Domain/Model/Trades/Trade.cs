@@ -35,7 +35,6 @@ namespace TradeManager.Domain.Models.Trades
             PortfolioId = portfolioId;
         }
         
-
         public static Trade Create(DateTime date, Guid productId, string details, Guid schemaId, Guid tradeId, Guid portfolioId)
         {
             return new Trade( date,  productId,  details,  schemaId,  tradeId,  portfolioId);

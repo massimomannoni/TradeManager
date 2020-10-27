@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Domain", "Trad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Service", "TradeManager.Service\TradeManager.Service.csproj", "{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeManager.Infrastructure.Scheduler.Api", "TradeManager.Infrastructure.Scheduler.Api\TradeManager.Infrastructure.Scheduler.Api.csproj", "{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeManager.Api", "TradeManager.Api\TradeManager.Api.csproj", "{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeManager.Api", "TradeManager.Api\TradeManager.Api.csproj", "{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeManager.Scheduler.Web", "TradeManager.Scheduler.Web\TradeManager.Scheduler.Web.csproj", "{BD791493-1A3C-466C-8CF9-EF94B27619D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49F7365-8A78-45B8-8F83-B8D8D3FB7386}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13AFB33E-B28F-47B3-B0C2-07A55D5A10B0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E92DF1C7-E4B6-490E-9F61-B2851DC914CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD791493-1A3C-466C-8CF9-EF94B27619D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD791493-1A3C-466C-8CF9-EF94B27619D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD791493-1A3C-466C-8CF9-EF94B27619D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD791493-1A3C-466C-8CF9-EF94B27619D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

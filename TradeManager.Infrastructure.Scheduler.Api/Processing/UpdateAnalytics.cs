@@ -18,15 +18,18 @@ namespace TradeManager.Infrastructure.Scheduler.Api.Processing
 
         public async Task Invoke()
         {
-            var jobInQueue = _context.Jobs.Where(x => x.ProcessedDate == null).Count();
+            var jobsInQueue = _context.Jobs.Where(x => x.ProcessedDate == null).Count();
 
-            if (jobInQueue < 1)
+            if (jobsInQueue < 1)
                 return;
 
             var jobToProceed = await _context.Jobs.Where(x => x.ProcessedDate == null).OrderBy(d => d.EnqueueDate).FirstOrDefaultAsync();
 
 
             // do something here
+            // update analytics
+
+            ///
 
 
             // when finished update the processDate
