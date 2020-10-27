@@ -43,7 +43,7 @@ namespace TradeManager.Scheduler.Infrastructure.Database
 
         private async Task ProcessLastEvent()
         {
-            var lastEventProcessed = await _context.EventsLog.Where(x => x.Type == eventTypeToProcess.FullName).OrderByDescending(d => d.ProcessedDate).SingleOrDefaultAsync();
+            var lastEventProcessed = await _context.EventsLog.Where(x => x.Type == eventTypeToProcess.FullName).OrderByDescending(d => d.ProcessedDate).FirstOrDefaultAsync();
             
             var eventsToProced = await _context.Events.Where(x => x.Type == eventTypeToProcess.FullName && x.Date >= lastEventProcessed.ProcessedDate).OrderBy(d => d.Date).ToListAsync();
             
