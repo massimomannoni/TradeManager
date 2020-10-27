@@ -3,12 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using TradeManager.Domain.Models.Events;
+using TradeManager.Domain.Models.EventsLog;
+using TradeManager.Domain.Models.Trades;
 
 namespace TradeManager.Scheduler.Infrastructure.Database
 {
     public class UpdateAnalytics : IInvocable
     {
         private readonly UpsLightJobContext _context;
+
 
         public UpdateAnalytics(UpsLightJobContext context)
         {
@@ -22,25 +26,32 @@ namespace TradeManager.Scheduler.Infrastructure.Database
             // get all events with occured date major of event processed date 
             // execute the logic
 
-            var lastEventProcessed = _context.EventsLog.Where(x => x.ProcessedDate == null).Count();
+            var eventsProceded = await _context.EventsLog.ToListAsync();
+            if (eventsProceded.Count < 1)
+                await ProceedEventsAsync();
 
-        
+        }
 
-            var jobToProceed = await _context.EventsLog.Where(x => x.ProcessedDate == null).OrderBy(d => d.EnqueueDate).FirstOrDefaultAsync();
+        private async Task ProceedEventsAsync()
+        {
+            Type eventTypeToProcess = typeof(TradeRegisteredEvent);
 
+            var eventsToProced = await _context.Events.Where(x => x.Type == eventTypeToProcess.FullName).OrderBy(d => d.Date).ToListAsync();
 
-            // do something here
-            // update analytics
-
-            ///
-
-
-            // when finished update the processDate
-            jobToProceed.ProcessedDate = DateTime.UtcNow;
+            foreach (Event eventToProced in eventsToProced)
+            {
+                // apply logic here
 
 
-            //save a baci&abbracci ;)
-           await _context.SaveChangesAsync();
+
+                ///
+
+                EventLog log = EventLog.Create(eventToProced.Type, DateTime.UtcNow);
+
+                await _context.EventsLog.AddAsync(log);
+
+                await _context.SaveChangesAsync();
+            }
 
         }
     }

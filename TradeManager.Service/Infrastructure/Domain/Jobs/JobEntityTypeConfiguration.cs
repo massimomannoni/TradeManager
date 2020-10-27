@@ -5,9 +5,9 @@ using TradeManager.Service.Infrastructure.Database;
 
 namespace TradeManager.Service.Infrastructure.Domain.Jobs
 {
-    internal sealed class JobEntityTypeConfiguration : IEntityTypeConfiguration<EventsLog>
+    internal sealed class JobEntityTypeConfiguration : IEntityTypeConfiguration<EventLog>
     {
-        public void Configure(EntityTypeBuilder<EventsLog> builder)
+        public void Configure(EntityTypeBuilder<EventLog> builder)
         {
             builder.ToTable("Jobs", Schemas.Event);
 

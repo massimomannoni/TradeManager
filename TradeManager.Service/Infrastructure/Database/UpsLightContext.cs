@@ -11,7 +11,7 @@ namespace TradeManager.Service.Infrastructure.Database
 
         public DbSet<Event> Event { get; set; }
 
-        public DbSet<EventsLog> Job { get; set; }
+        public DbSet<EventLog> Job { get; set; }
 
         protected UpsLightContext() { }
 

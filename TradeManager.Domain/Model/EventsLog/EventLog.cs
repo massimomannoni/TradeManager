@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TradeManager.Domain.Models.EventsLog
 {
-    public class EventsLog
+    public class EventLog
     {
         [Key]
         public Guid Id { get; private set; }
@@ -14,20 +14,20 @@ namespace TradeManager.Domain.Models.EventsLog
 
         public DateTime? ProcessedDate { get; set; }
 
-        private EventsLog()
+        private EventLog()
         {
         }
 
-        private EventsLog (string type,  DateTime processedDate)
+        private EventLog (string type,  DateTime processedDate)
         {
             Id = Guid.NewGuid();
             Type = type;
             ProcessedDate = processedDate;
         }
 
-        public static EventsLog Create( string type, DateTime processedDate)
+        public static EventLog Create( string type, DateTime processedDate)
         {
-            return new EventsLog( type, processedDate);
+            return new EventLog( type, processedDate);
         }
 
     }
