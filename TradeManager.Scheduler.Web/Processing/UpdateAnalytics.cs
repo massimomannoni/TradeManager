@@ -62,7 +62,7 @@ namespace TradeManager.Scheduler.Infrastructure.Database
 
             eventsToProced = null;
         }
-
+        
         private async Task UpdateLogs(List<Event> events)
         {
             if (events.Count < 1)

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TradeManager.Service.Configuration.Validation;
+using TradeManager.Service.Trades;
 using TradeManager.Service.Trades.CreateTrade;
 
 namespace TradeManager.Service.DomainEvents.Processing
@@ -36,7 +37,7 @@ namespace TradeManager.Service.DomainEvents.Processing
             foreach (var mediatrOpenType in mediatrOpenTypes)
             {
                 builder
-                    .RegisterAssemblyTypes(typeof(ProductTradeService).GetTypeInfo().Assembly)
+                    .RegisterAssemblyTypes(typeof(TradeServiceHandler).GetTypeInfo().Assembly)
                     .AsClosedTypesOf(mediatrOpenType)
                     .AsImplementedInterfaces();
             }

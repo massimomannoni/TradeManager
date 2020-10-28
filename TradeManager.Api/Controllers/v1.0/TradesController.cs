@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TradeManager.Service.Infrastructure.Database;
+using TradeManager.Service.Infrastructure.Domain.Trades;
 using TradeManager.Service.Trades.CreateTrade;
 
 
@@ -16,11 +17,11 @@ namespace TradeManager.Api.Controllers
     [ApiController]
     public class TradesController : ControllerBase
     {
-        private readonly UpsLightContext _context;
+        private readonly ITradeService _tradeServiceHandler;
 
-        public TradesController(UpsLightContext context)
+        public TradesController(ITradeService tradeService)
         {
-            _context = context;
+            _tradeServiceHandler = tradeService;
         }
 
         /// <summary>
@@ -31,10 +32,7 @@ namespace TradeManager.Api.Controllers
         public async Task<Guid> GetAsync()
         {
 
-            ProductTradeService productTrade = new ProductTradeService(_context);
-
-            Guid id = await productTrade.Create(new CreateTradeRequest(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
-
+            Guid id = await _tradeServiceHandler.Create(new CreateTradeRequest(DateTime.Now, Guid.NewGuid(), "test", Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
 
             return id;
         }
@@ -53,9 +51,7 @@ namespace TradeManager.Api.Controllers
         {
             
                
-            ProductTradeService productTrade = new ProductTradeService(_context);
-
-            Guid id = await productTrade.Create(new CreateTradeRequest(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
+            Guid id = await _tradeServiceHandler.Create(new CreateTradeRequest(request.Date, request.ProductId, request.Details, request.SchemaId, request.TradeId, request.ProductId));
             
     
             return Created(string.Empty, id);

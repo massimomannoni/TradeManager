@@ -11,17 +11,27 @@ using TradeManager.Service.Configuration;
 using TradeManager.Service.Infrastructure.Database;
 using TradeManager.Service.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using TradeManager.Service.Infrastructure.Domain.Trades;
+using TradeManager.Service.Trades.CreateTrade;
+using TradeManager.Service.Trades;
 
 namespace TradeManager.Api
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        private const string _connectionString = "UpsLightDb";
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-        }
+            _configuration = configuration;
 
-        public IConfiguration Configuration { get; }
+            var builder = new ConfigurationBuilder()
+                  .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                  .AddEnvironmentVariables();
+
+            _configuration = builder.Build();
+        }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,8 +39,7 @@ namespace TradeManager.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<UpsLightContext>(options =>
-                  options.UseSqlServer(Configuration.GetConnectionString("UpsLightDb")));
+            var connectionString = _configuration.GetConnectionString(_connectionString);
 
             services.AddHttpContextAccessor();
             var serviceProvider = services.BuildServiceProvider();
@@ -39,7 +48,7 @@ namespace TradeManager.Api
 
 
             // pass the services to Service project
-            return ApplicationStartup.Inizialize(services, executionContextAccessor);
+            return ApplicationStartup.Inizialize(services, connectionString, executionContextAccessor);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

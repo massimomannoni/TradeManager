@@ -5,8 +5,7 @@ namespace TradeManager.Service.Trades.CreateTrade
 {
     public class CreateTradeRequest
     {
-  
-
+ 
         public CreateTradeRequest(DateTime date, Guid productId, string details, Guid schemaId, Guid tradeId, Guid portfolioId)
         {
             Date = date;

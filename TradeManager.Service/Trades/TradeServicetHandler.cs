@@ -7,16 +7,19 @@ using TradeManager.Domain.Models.Trades;
 using TradeManager.Domain.SeedWork;
 using TradeManager.Service.Infrastructure;
 using TradeManager.Service.Infrastructure.Database;
+using TradeManager.Service.Infrastructure.Domain.Trades;
+using TradeManager.Service.Trades.CreateTrade;
 
-namespace TradeManager.Service.Trades.CreateTrade
+namespace TradeManager.Service.Trades
 {
-    public class ProductTradeService : Entity
+    public class TradeServiceHandler : ITradeService
     {
 
         private readonly UpsLightContext _context;
+        private readonly Mediator _mediator;
 
 
-        public ProductTradeService(UpsLightContext context)
+        public TradeServiceHandler(UpsLightContext context)
         {
             _context = context;
         }
