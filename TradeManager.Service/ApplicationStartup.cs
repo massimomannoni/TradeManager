@@ -25,14 +25,11 @@ namespace TradeManager.Service.Infrastructure
             containerBuilder.Populate(services);
 
             containerBuilder.RegisterModule(new MediatorModule());
-
             containerBuilder.RegisterModule(new DataAccessModule(connectionString));
 
 
             containerBuilder.RegisterInstance(executionContextAccessor);
 
-            // need register moduls
-            // in this context the module we need is the mediator to process the internal domain commands
 
             var containerBuilded = containerBuilder.Build();
 

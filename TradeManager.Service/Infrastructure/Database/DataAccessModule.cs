@@ -20,11 +20,9 @@ namespace TradeManager.Service.Infrastructure.Database
         protected override void Load(ContainerBuilder builder)
         {
 
-
             builder.RegisterType<TradeServiceHandler>()
                 .As<ITradeService>()
                 .InstancePerLifetimeScope();
-
 
             builder
                 .Register(c =>
